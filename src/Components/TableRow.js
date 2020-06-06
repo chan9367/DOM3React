@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import axios from "axios";
+import TableCell from './TableCell.js';
+import ReactDOM from 'react-dom';
 
-class addColumn extends Component {
+class TableRow extends Component {
     constructor(props){
         super(props);
         this.state={
-            show: true,
+            cells: "",
         };
      }
  
@@ -17,4 +18,4 @@ class addColumn extends Component {
 
 
 
-export default addColumn;
+export default TableRow;
