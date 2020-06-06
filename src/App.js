@@ -14,58 +14,51 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state= {
-      columns: 20,
-      rows: 20,
+      AddRows:0,
+      AddColumns: 0,
+      columns: "",
+      rows: "",
     }
   }
   
   
-  addNewCell = () =>{
-    let outputRow = [];
-
+  changeStates = () =>{
     
-    for(let i = 0; i < this.state.rows; i++)
-    {         
-      outputRow.push(<div className= {"row " + i.toString()}></div>);
-    }
-
-    ReactDOM.render((outputRow),
-      document.getElementsByClassName("table")[0]);
-
-    
-    let outputCells = [];
-
-    for(let j = 0; j < this.state.columns; j++)
-    {     
-       outputCells.push(<TableCell/>);
-    }
-
-    for(let i = 0; i < this.state.rows; i++)
-    {
-      ReactDOM.render((outputCells),
-      document.getElementsByClassName("row")[i]);  
-
-    }    
-    
+    this.setState({columns: Number(this.state.columns)+ Number(this.state.AddColumns)}, 
+      this.setState({rows: Number(this.state.rows) + Number(this.state.AddRows)}, this.generateTable));        
   }
 
+  generateTable = () =>{
+    ReactDOM.unmountComponentAtNode(document.getElementsByClassName("table-container")[0]);
+    ReactDOM.render((<Table columns={this.state.columns} rows={this.state.rows}/>),
+        document.getElementsByClassName("table-container")[0]);  
+  }
+  
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+
+  }
   render(){
     return (
       <>
         <div>
           <ColorMenu/>          
         </div>
+        <div><p>Choose number of Rows to be added</p><input type="text" name="AddRows" onChange={this.handleChange}></input></div>
+        <div><p>Choose number of Columns to be added</p><input type="text" name="AddColumns" onChange={this.handleChange}></input></div>
         <div>
         <button 
             className="button-add"
             onClick={() => {                 
-                      this.addNewCell();                                                 
+                      this.changeStates();                                                 
             }}>
-              ADD                    
+              GENERATE                    
             </button>
         </div>
-        <div className="table">
-          
+        <div className="table-container">          
         </div>
       </>
       

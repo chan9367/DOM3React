@@ -25,6 +25,4 @@ class ColorMenu extends Component {
    }
 }
 
-
-
 export default ColorMenu;
