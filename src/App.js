@@ -14,26 +14,39 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state= {
-      columns: 3,
-      rows: 1,
+      columns: 20,
+      rows: 20,
     }
   }
   
   
   addNewCell = () =>{
-    let output = [];
+    let outputRow = [];
 
     
     for(let i = 0; i < this.state.rows; i++)
-    {
-     //create new row.
-     //row -> function amout
-
+    {         
+      outputRow.push(<div className= {"row " + i.toString()}></div>);
     }
 
-    ReactDOM.render((output),
-      document.getElementsByClassName("row")[0]);
+    ReactDOM.render((outputRow),
+      document.getElementsByClassName("table")[0]);
 
+    
+    let outputCells = [];
+
+    for(let j = 0; j < this.state.columns; j++)
+    {     
+       outputCells.push(<TableCell/>);
+    }
+
+    for(let i = 0; i < this.state.rows; i++)
+    {
+      ReactDOM.render((outputCells),
+      document.getElementsByClassName("row")[i]);  
+
+    }    
+    
   }
 
   render(){
@@ -52,13 +65,12 @@ class App extends Component {
             </button>
         </div>
         <div className="table">
-          <div className="row">
-            <TableCell/>
-          </div>
+          
         </div>
       </>
       
     );
   }
 }
+
 export default App;
