@@ -1,18 +1,29 @@
 import React, { Component } from "react";
 
-class addRow extends Component {
+class AddRow extends Component {
     constructor(props){
         super(props);
         this.state={
-            show: true,
+            row: 0,
         };
      }
  
+handleAddRow = () => {
+    this.setState({row: this.state.row + 1});
+    console.log(this.state.row);
+}
+
  render(){
-     return
+     
+     return (
+        <div>
+            <button onClick={this.handleAddRow}>Add Row</button>
+        </div>
+        
+     )
    }
 }
 
 
 
-export default addRow;
+export default AddRow;

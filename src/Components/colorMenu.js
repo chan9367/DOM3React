@@ -10,6 +10,8 @@ class ColorMenu extends Component {
  
 handleColor = (event) => {
     this.setState({color: event.target.value})
+    
+
 }
 
  render(){
@@ -24,8 +26,8 @@ handleColor = (event) => {
                 <option value="green">Green</option>
                 <option value="blue">Blue</option>
                 <option value="purple">Purple</option>
-                {console.log("color: "+ this.state.color)}
             </select>
+            {console.log(this.state.color)}
     </div>)
      
    }
