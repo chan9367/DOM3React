@@ -9,7 +9,18 @@ import colorMenu from './Components/colorMenu.js';
 class App extends Component {
   render(){
     return (
-      <h1>Hello World</h1>
+        <div>
+          <select name="color" onchange="">
+            <option value="">-------</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+          </select>
+        </div>
+      
     );
   }
 }
