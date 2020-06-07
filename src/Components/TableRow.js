@@ -8,6 +8,7 @@ class TableRow extends Component {
         this.state={
             rowNum: this.props.rowNum,
             cells: this.props.columns,
+            color: this.props.color,
         };
      }
 
@@ -17,7 +18,7 @@ class TableRow extends Component {
 
         for(let i = 0; i < this.state.cells; i++)
         {     
-            outputCells.push(<TableCell/>);
+            outputCells.push(<TableCell color={this.props.color}/>);
         }
         
         ReactDOM.render((outputCells),

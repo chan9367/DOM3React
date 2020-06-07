@@ -8,7 +8,7 @@ class Table extends Component {
         this.state= {
             columns: this.props.columns,
             rows: this.props.rows,
-            color: "",
+            color: this.props.color,
           }
      }
 
@@ -18,7 +18,7 @@ class Table extends Component {
         for(let i = 0; i < this.state.rows; i++)
         {     
             
-            outputRows.push(<TableRow rowNum={i} columns={this.state.columns}/>);
+            outputRows.push(<TableRow color={this.props.color} rowNum={i} columns={this.state.columns}/>);
         }
         
         ReactDOM.render((outputRows),
@@ -26,28 +26,11 @@ class Table extends Component {
 
     }
 
-    handleColor = (event) => {
-        this.setState({color: event.target.value})
-        
-    
-    }
     
     render(){
         return(
             <>
-        <div>
-         <label>Choose a color: </label>
-            <select name="color" onChange={this.handleColor}>
-                <option value="">-------</option>
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="purple">Purple</option>
-            </select>
-            {console.log("current picked color: "+this.state.color)}
-        </div>
+        
                 <div className="table">
                     
                 </div>

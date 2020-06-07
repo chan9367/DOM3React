@@ -16,6 +16,7 @@ class App extends Component {
       rows: 0,
       update: false,
       click: 1,
+      color:"",
     };
     this.clearStates = this.clearStates.bind(this);
   }
@@ -57,7 +58,7 @@ class App extends Component {
   generateTable = () =>{        
     if(!this.state.update)
     {
-      ReactDOM.render((<Table columns={this.state.columns} rows={this.state.rows}/>),
+      ReactDOM.render((<Table color={this.state.color} columns={this.state.columns} rows={this.state.rows}/>),
       document.getElementById("table-container")); 
     }
     else{
@@ -103,15 +104,34 @@ class App extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-
   }
+  handleColor = (event) => {
+    this.setState({color: event.target.value});
+    //add something to pass through the color?
+}
   render(){
     return (
       <>
-        <div><p>Choose number of Rows to be added</p><input type="text" name="AddRows" onChange={this.handleChange}></input></div>
-        <div><p>Choose number of Columns to be added</p><input  type="text" name="AddColumns" onChange={this.handleChange}></input></div>
+      
+        <div><p>(1) Choose number of Rows to be added</p><input type="text" name="AddRows" onChange={this.handleChange}></input></div>
+        <div><p> (2) Choose number of Columns to be added</p><input  type="text" name="AddColumns" onChange={this.handleChange}></input></div>
         <div>
-        <button 
+        <div>
+         <label> (3) Choose a color: </label>
+            <select name="color" onChange={this.handleColor}>
+                <option value="">-------</option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+            </select>
+            {console.log("current picked color: "+this.state.color)}
+
+         
+        </div>
+        <p>(4) Click on the button to generate a table</p><button 
             className="button-add"
             onClick={() => {                 
                       this.changeStates();                                                 
@@ -122,6 +142,7 @@ class App extends Component {
         
         <div id="table-container">          
         </div>
+        <p>(5) Click on a cell after the table is generated</p>
       </>
       
     );
