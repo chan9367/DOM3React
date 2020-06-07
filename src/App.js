@@ -142,7 +142,7 @@ class App extends Component {
         
         <div id="table-container">          
         </div>
-        <p>(5) Click on a cell after the table is generated</p>
+        <p>(5) Click on a cell after the table is generated to color it</p>
       </>
       
     );
