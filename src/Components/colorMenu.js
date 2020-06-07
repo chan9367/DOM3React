@@ -11,7 +11,7 @@ class ColorMenu extends Component {
  
  render(){
      return(
-        <select name="color" onchange="">
+        <select name="color" onChange="">
         <option value="">-------</option>
         <option value="red">Red</option>
         <option value="orange">Orange</option>

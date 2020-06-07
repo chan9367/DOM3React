@@ -12,7 +12,16 @@ class TableCell extends Component {
  
  render(){
      return(
-         <td className="table-cell"></td>
+         <table>
+            <tbody>
+                <tr>
+                    <td className="table-cell"></td>
+                </tr>
+                
+            </tbody>
+         </table>
+         
+         
      )     
    }
 }

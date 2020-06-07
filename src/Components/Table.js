@@ -27,7 +27,7 @@ class Table extends Component {
     
     render(){
         return(
-            <>
+            <>            
                 <div className="table">
                     
                 </div>
