@@ -10,7 +10,7 @@ class Table extends Component {
         this.state= {
             columns: this.props.columns,
             rows: this.props.rows,
-            color: "",
+            color: this.props.color,
           }
      }
 
@@ -23,7 +23,9 @@ class Table extends Component {
         for(let i = 0; i < this.state.rows; i++)
         {   
             
+
             outputRows.push(<TableRow rowNum={i} columns={this.state.columns} currentColor={this.state.color} changeColor = {this.getColor}/>);
+
         }
         outputRows.push(<div className="end-table"></div>)
         ReactDOM.render((outputRows),
@@ -34,13 +36,15 @@ class Table extends Component {
         return this.props.getColor();
     }
 
+
     
+
     
     render(){
         
         return(
             <>
-       
+
                 <div className="table">
 
                     

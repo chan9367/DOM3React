@@ -3,9 +3,11 @@ import React, { Component } from "react";
 class TableCell extends Component {
     constructor(props){
         super(props);
+
         this.state={    
             coordinate: this.props.coordinate,        
             color: "white",            
+
         };
      }
  
@@ -15,10 +17,12 @@ class TableCell extends Component {
         this.setState({
             color: this.props.getTableColor(),            
         });
+
     }
 
     render(){
         return(
+
             <div className={"table-cell"+this.state.coordinate} >
                 <table>
                     <tbody>
@@ -30,6 +34,7 @@ class TableCell extends Component {
                 </table>
             </div>
             
+
             
             
         )     
