@@ -46,7 +46,7 @@ class Table extends Component {
                 <option value="blue">Blue</option>
                 <option value="purple">Purple</option>
             </select>
-            {console.log(this.state.color)}
+            {console.log("current picked color: "+this.state.color)}
         </div>
                 <div className="table">
                     
