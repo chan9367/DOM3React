@@ -3,26 +3,33 @@ import React, { Component } from "react";
 class TableCell extends Component {
     constructor(props){
         super(props);
-        this.state={            
-            color: "white",
+        this.state={    
+            coordinate: this.props.coordinate,        
+            color: "white",            
         };
      }
  
 
     changeColor = () =>{
-        this.setState({color: "red"});
+        
+        this.setState({
+            color: this.props.getTableColor(),            
+        });
     }
 
     render(){
         return(
-            <table>
-                <tbody>
-                    <tr>
-                        <td style={{background: this.state.color}} className="table-cell" onClick={e => this.changeColor()}></td>
-                    </tr>
-                    
-                </tbody>
-            </table>
+            <div className={"table-cell"+this.state.coordinate} >
+                <table>
+                    <tbody>
+                        <tr>
+                            <td key={this.props.color} style={{background: this.state.color}} className={"cell " + this.state.coordinate} onClick={e => this.changeColor()}></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            
             
             
         )     
