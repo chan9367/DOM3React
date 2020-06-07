@@ -8,28 +8,96 @@ import ReactDOM from 'react-dom';
 class App extends Component {
 
   constructor(props){
-    super(props)
+    super(props);
     this.state= {
       AddRows:0,
       AddColumns: 0,
-      columns: "",
-      rows: "",
-    }
+      columns: 5,
+      rows: 5,
+      update: false,
+      click: 1,
+    };
+    this.clearStates = this.clearStates.bind(this);
   }
   
+  
+  updateTable = () => {
+    
+    if(this.state.click === 1){
+      this.clearStates();
+      ReactDOM.unmountComponentAtNode(document.getElementById("table-container"));     
+      this.setState({click: 2}, this.generateTable);
+      
+    }
+    else if(this.state.click === 2){      
+    
+      ReactDOM.render((<Table columns={this.state.columns} rows={this.state.rows}/>),
+      document.getElementById("table-container")); 
+      this.setState({click: 1});      
+    }
+    
+    
+    
+  }
   
   changeStates = () =>{
+    if(this.state.rows > 0 || this.state.columns > 0)
+    {
+      this.setState({update: true});
+    }
+    else{
+      this.setState({update: false});
+    }
     
-    this.setState({columns: Number(this.state.columns)+ Number(this.state.AddColumns)}, 
-      this.setState({rows: Number(this.state.rows) + Number(this.state.AddRows)}, this.generateTable));        
+    this.setState({columns: Number(this.state.columns)+ Number(this.state.AddColumns),
+      rows: Number(this.state.rows) + Number(this.state.AddRows)}, 
+      this.generateTable);        
   }
 
-  generateTable = () =>{
-    ReactDOM.unmountComponentAtNode(document.getElementsByClassName("table-container")[0]);
-    ReactDOM.render((<Table columns={this.state.columns} rows={this.state.rows}/>),
-        document.getElementsByClassName("table-container")[0]);  
+  generateTable = () =>{        
+    if(!this.state.update)
+    {
+      ReactDOM.render((<Table columns={this.state.columns} rows={this.state.rows}/>),
+      document.getElementById("table-container")); 
+    }
+    else{
+      this.updateTable();
+    }
+     
   }
   
+  clearStates() {    
+    let cellsDelete = document.getElementsByClassName("table-cell");
+    let rowsDelete = document.getElementsByClassName("row");
+    let tableDelete = document.getElementsByClassName("table");
+    let tableContainerDelete = document.getElementsByClassName("table-container");
+
+    let numOfCells = cellsDelete.length;
+    let numOfRows = rowsDelete.length;
+    let numOfTables = tableDelete.length;
+    let numOfContTable = tableContainerDelete.length;
+
+    for(let i = numOfCells - 1; i >= 0; i--)
+    {
+      ReactDOM.unmountComponentAtNode(cellsDelete[i]);
+    }
+
+    for(let i = numOfRows - 1; i >= 0; i--)
+    {
+      ReactDOM.unmountComponentAtNode(rowsDelete[i]);
+    }
+
+    for(let i = numOfTables - 1; i >= 0; i--)
+    {
+      ReactDOM.unmountComponentAtNode(tableDelete[i]);
+    }
+
+    for(let i = numOfContTable - 1; i >= 0; i--)
+    {
+      ReactDOM.unmountComponentAtNode(tableContainerDelete[i]);
+    }        
+      
+  }
 
   handleChange = event => {
     this.setState({
@@ -40,9 +108,8 @@ class App extends Component {
   render(){
     return (
       <>
-        
-        <div><p>Choose number of Rows to be added</p><input type="text" name="AddRows" onChange={this.handleChange}></input></div>
-        <div><p>Choose number of Columns to be added</p><input type="text" name="AddColumns" onChange={this.handleChange}></input></div>
+        <div><p>Choose number of Rows to be added</p><input placeholder="5" type="text" name="AddRows" onChange={this.handleChange}></input></div>
+        <div><p>Choose number of Columns to be added</p><input placeholder="5" type="text" name="AddColumns" onChange={this.handleChange}></input></div>
         <div>
         <button 
             className="button-add"
@@ -50,9 +117,10 @@ class App extends Component {
                       this.changeStates();                                                 
             }}>
               GENERATE                    
-            </button>
+            </button>            
         </div>
-        <div className="table-container">          
+        
+        <div id="table-container">          
         </div>
       </>
       
