@@ -12,8 +12,8 @@ class App extends Component {
     this.state= {
       AddRows:0,
       AddColumns: 0,
-      columns: 5,
-      rows: 5,
+      columns: 0,
+      rows: 0,
       update: false,
       click: 1,
     };
@@ -108,8 +108,8 @@ class App extends Component {
   render(){
     return (
       <>
-        <div><p>Choose number of Rows to be added</p><input placeholder="5" type="text" name="AddRows" onChange={this.handleChange}></input></div>
-        <div><p>Choose number of Columns to be added</p><input placeholder="5" type="text" name="AddColumns" onChange={this.handleChange}></input></div>
+        <div><p>Choose number of Rows to be added</p><input type="text" name="AddRows" onChange={this.handleChange}></input></div>
+        <div><p>Choose number of Columns to be added</p><input  type="text" name="AddColumns" onChange={this.handleChange}></input></div>
         <div>
         <button 
             className="button-add"
