@@ -4,15 +4,22 @@ class TableCell extends Component {
     constructor(props){
         super(props);
         this.state={            
-            
+            color: "",
         };
      }
-
-
-     
+ 
  render(){
      return(
-         <td id="cell" className="table-cell"></td>
+         <table>
+            <tbody>
+                <tr>
+                    <td className="table-cell"></td>
+                </tr>
+                
+            </tbody>
+         </table>
+         
+         
      )     
    }
 }
