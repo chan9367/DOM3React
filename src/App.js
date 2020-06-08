@@ -216,8 +216,8 @@ class App extends Component {
     return (
       <>
         
-        <div><p>Choose number of Rows to be added</p><input type="text" name="addRows" onChange={this.handleChange}></input></div>
-        <div><p>Choose number of Columns to be added</p><input type="text" name="addColumns" onChange={this.handleChange}></input></div>
+        <div><p>(1) Choose number of Rows to be added</p><input type="text" name="addRows" onChange={this.handleChange}></input></div>
+        <div><p>(2) Choose number of Columns to be added</p><input type="text" name="addColumns" onChange={this.handleChange}></input></div>
 
         <div>
         <div>
@@ -244,19 +244,7 @@ class App extends Component {
             </button>            
         </div>
 
-        <div>
-         <label>Choose a color: </label>
-            <select name="color" onChange={this.handleColor}>
-                <option value="">-------</option>
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="purple">Purple</option>
-            </select>
-            
-        </div>
+        
         
         <div id="table-container">          
         </div>
