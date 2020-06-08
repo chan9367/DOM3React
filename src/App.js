@@ -216,10 +216,10 @@ class App extends Component {
     return (
       <>
         
-        <div><p>(1) Choose number of Rows to be added</p><input type="text" name="addRows" onChange={this.handleChange}></input></div>
-        <div><p>(2) Choose number of Columns to be added</p><input type="text" name="addColumns" onChange={this.handleChange}></input></div>
+        <div className = "center"><p>(1) Choose number of Rows to be added</p><input type="text" name="addRows" onChange={this.handleChange}></input></div>
+        <div className = "center"><p>(2) Choose number of Columns to be added</p><input type="text" name="addColumns" onChange={this.handleChange}></input></div>
 
-        <div>
+        <div className = "center">
         <div>
          <label> (3) Choose a color: </label>
             <select name="color" onChange={this.handleColor}>
@@ -236,7 +236,7 @@ class App extends Component {
          
         </div>
         <p>(4) Click on the button to generate a table</p><button 
-            className="button-add"
+            className="button-add btn-primary"
             onClick={() => {                 
                       this.changeStates();                                                 
             }}>
@@ -248,7 +248,7 @@ class App extends Component {
         
         <div id="table-container">          
         </div>
-        <p>(5) Click on a cell after the table is generated to color it</p>
+        <p className = "center">(5) Click on a cell after the table is generated to color it</p>
       </>
       
     );
